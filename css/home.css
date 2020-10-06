@@ -1,0 +1,63 @@
+html{
+    background-color: hsla(280, 13%, 25%, 0.8);
+    padding: 7%;
+  }
+
+  body{
+    background-color: hsla(, saturation, lightness);
+    color: hsla(0,100%, 100%, 0.9); 
+      }
+
+  body{
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+  }
+
+ h1{
+     text-transform: uppercase;
+     letter-spacing: 2px;
+ }
+
+ p{
+     line-height: 1em;
+ }
+
+ link{
+     text-decoration: none;
+ }
+
+ div.portfolio{
+     border-right: 3px solid #ffffff;
+     border-bottom: 3px solid #ffffff;
+ }
+
+ address{
+    border-right: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
+ }
+
+div.schedule{
+    border-right: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+
+p::first-letter{
+font-size: 200%;
+}
+table{
+    border: black;
+    padding: 6px;
+    vertical-align: 6px;
+    empty-cells: show;
+}
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    right: 50%;
+}
+h1:hover{
+    transform: translate(20px, 20px);
+}
+ul li{
+    display: inline;;
+}

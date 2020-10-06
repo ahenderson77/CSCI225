@@ -15,7 +15,22 @@
                     Last Name: <input type="text" name="lname" placeholder="anonymous" required>
                     <br>
                     Email: <input type="email" placeholder="name@domain.com" name="mail">
-                    Will you recomend this site: <input type="radio" name="yes" value="Yes"> Yes<input type="radio" name="no" value="No">No
+                    Will you recomend this site: <input type="radio" name="recomend" value="Yes"> Yes<input type="radio" name="recomend" value="No">No
+                    <br>
+                    Please selct your favorit website from the list:
+                    <select name="site" size="1" id="site">
+                        <option value="YouTube">YouTube</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Twitter">Twitter</option>
+                        <option value="Google">Google</option>
+                        <option value="Amazon">Amazon</option>
+                        <option value="Reddit">Reddit</option>
+                    </select>
+                    <br>
+                    On a scale of 1 to 10 how do you rate this site:
+                    <input type="range" min="1" max="10">
+                    <br>
+                    <input type="submit" value="Submit">
                 </p>
             </form>
         </div>
