@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Conversion</title>
+</head>
+
+<body>
+<div class="conversion">
+    <h1>Unit Conversion Calculator - Length</h1>
+
+    <p>
+    <input type="text" id="input" name="input">
+    <select name="unit1" size="1" id="unit1">
+        <option>Foot</option>
+        <option>Inch</option>
+        <option>Meter</option>
+    </select>
+    =
+
+    <input type="text" id="output" name="output" readonly>
+    
+    <select name="unit2" size="1" id="unit2">
+        <option>Foot</option>
+        <option>Inch</option>
+        <option>Meter</option>
+    </select>
+
+    <br>
+    <br>
+    <input type="button" id="tryit" value="Calculate">
+    </p>
+    <script>
+        function calculate(){
+            var num = parseFloat(document.getElementById('input').value); 
+            var out = 0;
+            var inUnit = document.getElementById('unit1').value;
+            var outUnit = document.getElementById('unit2').value;
+
+            if (inUnit == "Foot" && outUnit == "Foot"){
+                out = num;
+            }
+            else if (inUnit == "Foot" && outUnit == "Inch"){
+                out = num * 12;
+            }
+            else if (inUnit == "Foot" && outUnit == "Meter"){
+                out = num / 3.281;
+            }
+            else if (inUnit == "Inch" && outUnit == "Foot"){
+                out = num / 12;
+            }
+            else if (inUnit == "Inch" && outUnit == "Inch"){
+                out = num;
+            }
+            else if (inUnit == "Inch" && outUnit == "Meter"){
+                out = num / 39.37;
+            }
+            else if (inUnit == "Meter" && outUnit == "Foot"){
+                out = num * 3.281;
+            }
+            else if (inUnit == "Meter" && outUnit == "Inch"){
+                out = num * 39.37;
+            }
+            else if (inUnit == "Meter" && outUnit == "Meter"){
+                out = num;
+            }
+
+            document.getElementById('output').value = out;
+
+        }
+        document.getElementById('tryit').addEventListener('click', calculate);
+
+    </script>  
+ </div>
+</body>
