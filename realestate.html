@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loan Calculater</title>
+    <style>
+        body{
+            background-image: url(img/Estate.jpg);
+            background-repeat: no-repeat;
+        }
+        div.in{
+            position: absolute;
+            left: 500px;
+            top: 250px;
+            background-color: aqua;
+        }
+        h1{
+            position: absolute;
+            left: 500px;
+            top: 200px;
+            background-color: aqua;
+        }
+        p{
+           position: absolute;
+            left: 500px;
+            top: 250px;
+            background-color: aqua;
+            text-align: center;
+        }
+        </style>
+</head>
+<body>
+    <div id="in" class="float-right">
+        <h1>Loan Information</h1>
+        <p>Loan Amount: <input type="text" id="amount" name="amount">$
+        <br>
+        interest Rate: <input type="text" id="rate" name="rate">%
+        <br>
+        Loan Term: <input type="text" id="term" name="term">Years
+        <br>
+        Start Date <select name="month" id="month">
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+        </select>
+        <select name="year" id="year">
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+        </select>
+        <br>
+        <input id="calc" type="submit" value="Calculate">
+        </p>
+        
+        
+        
+    </div>
+
+    <script>
+        document.getElementById('calc').addEventListener('click', run);
+
+        function run(){
+            var amount = parseInt(document.getElementById('amount').value);
+            var rate = parseFloat(document.getElementById('rate').value);
+            rate = parseFloat(rate/100);
+            var term =parseInt(document.getElementById('term').value);
+            var month =document.getElementById('month').selectedIndex;
+            var year = parseInt(document.getElementById('year').value);
+            var balance = amount;
+
+            var mIntRate = parseFloat(rate / 12);
+            var mPayment = amount*((mIntRate)/(1-(1+Math.pow(mIntRate, term))));
+            var intPaidPerMonth = balance*mIntRate;
+            var principal = mPayment - intPaidPerMonth;
+            
+            var interestpay = 0;
+            var principalpay= 0;
+
+            var result="<p id=\"mPayment\">Monthy Payment is: "+mPayment+"</p><table>";
+
+            for(var i=1; i<=term; i++){
+                if(i==1)
+                result += "<tr>"+"<th>Date </th>"+" <th>Interest </th>"+"<th>Principal </th>"+" <th>Balance </th>"+"</tr>";
+
+                result += "<tr>";
+
+    
+                for(var j=1; j<=12; j++){
+                    intPaidPerMonth = balance * mIntRate;
+
+                    principal = mPayment-intPaidPerMonth;
+
+
+                    balance = balance-principal;
+                    var balance2 = balance.toFixed(2);
+
+                    interestpay += intPaidPerMonth;
+                    var interest2 = interestpay.toFixed(2);
+
+                    principalpay += mPayment-intPaidPerMonth;
+                    var principal2 = principalpay.toFixed(2);
+
+
+                }
+
+                result += "<td>"+(month+1)+"/"+(year)+"-"+(month+1)+"/"+(year+1)+" </td> <td>$"+interest2+"</td><td> $"+principal2+" </td><td>$"+balance2+"</td>";
+                year++;
+
+                var test = document.getElementById('in');
+                test.innerHTML = result;
+                interestpay=0;
+                principalpay=0;
+                result += "</tr>"
+
+            }
+            result = "</table>";
+        }
+    </script>
+</body>
